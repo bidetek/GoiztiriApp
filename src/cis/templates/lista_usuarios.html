@@ -1,4 +1,4 @@
-<h1>Usuarios 2</h1>
+<h1>Usuarios</h1>
 <p>
     <a href="{% url "usuario:new" %}">Alta Usuario</a>
 </p>
@@ -14,3 +14,19 @@
         </li>
     {% endfor %}
 </ul>
+
+{% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/usuarios?page={{ page_obj.previous_page_number }}"><</a>
+                {% endif %}
+                <span class="page-current">
+                    Pág {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/usuarios?page={{ page_obj.next_page_number }}">></a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}

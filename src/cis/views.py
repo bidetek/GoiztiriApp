@@ -12,6 +12,7 @@ from django.views.generic.edit import( CreateView, UpdateView, DeleteView )
 class ListaUsuarios(ListView):
 	template_name = "lista_usuarios.html"
 	model = Usuario
+	paginate_by = 3
 
 class DetalleUsuario(DetailView):
 	template_name = "detalle_usuario.html"
