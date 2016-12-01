@@ -2,7 +2,6 @@ from django.shortcuts import render
 
 from django.core.urlresolvers import reverse_lazy
 
-from .forms import RegForm, UsuarioModelForm
 from .models import Usuario 
 
 
@@ -11,12 +10,15 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import( CreateView, UpdateView, DeleteView ) 
 
 class ListaUsuarios(ListView):
+	template_name = "lista_usuarios.html"
 	model = Usuario
 
 class DetalleUsuario(DetailView):
+	template_name = "detalle_usuario.html"
 	model = Usuario
 
 class CrearUsuario(CreateView):
+	template_name = "alta_usuario.html"
 	model = Usuario
 	success_url = reverse_lazy('usuario:list')
 	fields = ['nombre','apellidos','email']
@@ -27,6 +29,7 @@ class ActualizarUsuario(UpdateView):
 	fields = ['nombre','apellidos','email']
 
 class BorarUsuario(DeleteView):
+	template_name = "confirmar_borrar_usuario.html"
 	model = Usuario
 	success_url = reverse_lazy('usuario:list')
 

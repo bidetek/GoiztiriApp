@@ -1,0 +1,6 @@
+<form method="post">{% csrf_token %}
+    ¿Estás seguro que deseas borrar el usuario "{{ object }}"?
+    <input type="submit" value="Sí" />
+  	<input type="button" value="No"
+onclick="window.location='/usuarios'" />
+</form>

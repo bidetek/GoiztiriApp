@@ -1,4 +1,4 @@
-<h1>Usuarios</h1>
+<h1>Usuarios 2</h1>
 <p>
     <a href="{% url "usuario:new" %}">Alta Usuario</a>
 </p>
@@ -8,8 +8,8 @@
             <p><b>{{ usuario.nombre }}</b> {{ usuario.apellidos }}</p>
             <p>
                 <a href="{% url 'usuario:detail' usuario.id %}">Ver</a> | 
-                <a href="{% url "usuario:edit" usuario.id %}">Editar</a> | 
-                <a href="{% url "usuario:delete" usuario.id %}">Borrar</a> 
+                <a href="{% url 'usuario:edit' usuario.id %}">Editar</a> | 
+                <a href="{% url 'usuario:delete' usuario.id %}">Borrar</a> 
             </p>
         </li>
     {% endfor %}
