@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include	
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 
 from cis import views 
 
@@ -22,5 +23,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^usuarios/', include('cis.urls', namespace='usuario')),
     url(r'^$', views.inicio, name='inicio'),
+    url(r'^accounts/login/$', auth_views.login),
+
+
 
 ]
