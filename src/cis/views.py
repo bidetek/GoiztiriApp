@@ -18,6 +18,17 @@ class ListaUsuarios(ListView):
 	model = Usuario
 	paginate_by = 3
 
+	def get_context_data(self, **kwargs):
+		context = super(ListaUsuarios, self).get_context_data(**kwargs)
+		context['num_usuarios'] = Usuario.objects.count()
+		context['num_chicos'] = Usuario.objects.filter(sexo='V').count()
+		context['num_chicas'] = Usuario.objects.filter(sexo='M').count()
+		return context
+
+	def head(self, *args, **kwargs):
+		num_gente = Usuario.objects.count()
+		return num_gente
+
 	# Pruebas de autenticacion 
 	#
 	# def get(self, request):
@@ -31,17 +42,18 @@ class DetalleUsuario(DetailView):
 	template_name = "detalle_usuario.html"
 	model = Usuario
 
+
 class CrearUsuario(CreateView):
 	template_name = "alta_usuario.html"
 	model = Usuario
 	success_url = reverse_lazy('usuario:list')
-	fields = ['nombre','apellidos','email']
+	fields = ['nombre','apellidos','email','sexo']
 
 class ActualizarUsuario(UpdateView):
 	template_name = "alta_usuario.html"
 	model = Usuario
 	success_url = reverse_lazy('usuario:list')
-	fields = ['nombre','apellidos','email']
+	fields = ['nombre','apellidos','email','sexo']
 
 	@method_decorator(login_required)
 	def dispatch(self, *args, **kwargs):

@@ -2,6 +2,9 @@
 <p>
     <a href="{% url "usuario:new" %}">Alta Usuario</a>
 </p>
+
+
+<p>Hay <b>{{ num_usuarios }}</b> personas. <b>{{ num_chicas }}</b> chicas y <b>{{num_chicos}}</b> chicos</p>
 <ul>
     {% for usuario in object_list %}
         <li>

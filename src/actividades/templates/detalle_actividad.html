@@ -1,0 +1,11 @@
+<h1>Detalle: {{ actividad.nombre }}</h1>
+<p>Nombre: <i>{{ actividad.nombre }}</i></p>
+<p>Descripción: <i>{{ actividad.descripcion }}</i></p>
+<p>Inicio: <i>{{ actividad.fecha_inicio }}</i></p>
+<p>Fin: <i>{{ actividad.fecha_fin }}</i></p>
+
+
+<p>Fecha de alta: <i>{{ actividad.date_created}}</i></p>
+<p>
+    <a href="{% url "actividades:list" %}">Volver</a>
+</p>

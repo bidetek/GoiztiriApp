@@ -1,0 +1,35 @@
+<h1>Actividades</h1>
+<p>
+    <a href="{% url "actividades:new" %}">Alta actividad</a>
+</p>
+
+
+<p>Hay <b>{{ num_actividades }}</b> Actividades creadas. Con {{ num_apuntados }} apuntados.
+<ul>
+    {% for actividad in object_list %}
+        <li>
+            <p><b>{{ actividad.nombre }}</b> {{ actividad.apellidos }}</p>
+            <p>
+                <a href="{% url 'actividades:detail' actividad.id %}">Ver</a> | 
+                <a href="{% url 'actividades:edit' actividad.id %}">Editar</a> | 
+                <a href="{% url 'actividades:delete' actividad.id %}">Borrar</a> 
+            </p>
+        </li>
+    {% endfor %}
+</ul>
+
+{% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/actividades?page={{ page_obj.previous_page_number }}"><</a>
+                {% endif %}
+                <span class="page-current">
+                    Pág {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/actividads?page={{ page_obj.next_page_number }}">></a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}

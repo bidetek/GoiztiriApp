@@ -24,7 +24,6 @@ urlpatterns = [
     url(r'^usuarios/', include('cis.urls', namespace='usuario')),
     url(r'^$', views.inicio, name='inicio'),
     url(r'^accounts/login/$', auth_views.login),
-
-
+    url(r'^actividades/', include('actividades.urls', namespace='actividades')),
 
 ]

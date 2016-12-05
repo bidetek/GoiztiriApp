@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # apps propias
     'cis',
+    'actividades',
 ]
 
 MIDDLEWARE = [
@@ -74,14 +76,28 @@ WSGI_APPLICATION = 'goiztiri.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-# Pasar cuanto antes a PostGreSQL
 
+
+# Pasar cuanto antes a PostGreSQL
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'goiztiri_db',
+        'USER': 'goiztiri_user',
+        'PASSWORD': 'ncc1701',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
+# Sqlite3 en disco
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 # Password validation
