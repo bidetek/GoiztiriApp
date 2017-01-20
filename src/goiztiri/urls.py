@@ -17,12 +17,16 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
-from cis import views 
+from django.views.generic import TemplateView
+
+from cis import views
+from cis.views import PaginaHome
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^usuarios/', include('cis.urls', namespace='usuario')),
-    url(r'^$', views.inicio, name='inicio'),
+    url(r'^$', PaginaHome.as_view(), name='home'),
     url(r'^accounts/login/$', auth_views.login),
     url(r'^actividades/', include('actividades.urls', namespace='actividades')),
 

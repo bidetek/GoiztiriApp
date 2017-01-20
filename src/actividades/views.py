@@ -12,11 +12,19 @@ from django.views.generic.edit import( CreateView, UpdateView, DeleteView )
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
+from cis.models import Usuario 
 
 class ListaActividades(ListView):
 	template_name = "lista_Actividades.html"
 	model = Actividad
 	paginate_by = 3
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(ListaActividades, self).get_context_data(*args, **kwargs)
+		context["usuarios"] = Usuario.objects.all()
+		return context
+
+
 
 	
 class DetalleActividad(DetailView):
@@ -50,9 +58,9 @@ class BorarActividad(DeleteView):
 		return super(BorarActividad, self).dispatch(*args, **kwargs)
 
 
-# Sistema viejo
-def inicio(request):
- 	return render(request, "inicio.html", {} )
+# # Sistema viejo
+# def inicio(request):
+#  	return render(request, "inicio.html", {} )
 
 
 

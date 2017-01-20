@@ -11,6 +11,16 @@ from django.views.generic.edit import( CreateView, UpdateView, DeleteView )
 
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.views.generic import TemplateView
+
+class PaginaHome(TemplateView):
+	template_name = "inicio.html"
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(PaginaHome, self).get_context_data(*args, **kwargs)
+		context["titulo"] = Usuario.objects.all()
+		return context
+
 
 
 class ListaUsuarios(ListView):
@@ -70,7 +80,7 @@ class BorarUsuario(DeleteView):
 
 
 # Sistema viejo
-def inicio(request):
- 	return render(request, "inicio.html", {} )
+# def inicio(request):
+#  	return render(request, "inicio.html", {} )
 
 

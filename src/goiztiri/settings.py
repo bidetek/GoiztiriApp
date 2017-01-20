@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'goiztiri.wsgi.application'
 
 
 
-# Pasar cuanto antes a PostGreSQL
+# PostGreSQL
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',

@@ -4,11 +4,11 @@
 </p>
 
 
-<p>Hay <b>{{ num_actividades }}</b> Actividades creadas. Con {{ num_apuntados }} apuntados.
+<p>Hay <b>{{ object_list.count }}</b> Actividades creadas. Con {{ num_apuntados }} apuntados.
 <ul>
     {% for actividad in object_list %}
         <li>
-            <p><b>{{ actividad.nombre }}</b> {{ actividad.apellidos }}</p>
+            <p><b>{{ actividad.nombre }}</b> participantes: {{ participantes.count }}</p>
             <p>
                 <a href="{% url 'actividades:detail' actividad.id %}">Ver</a> | 
                 <a href="{% url 'actividades:edit' actividad.id %}">Editar</a> | 
@@ -33,3 +33,13 @@
             </span>
         </div>
     {% endif %}
+
+<form method="POST">
+<select name="item_id">
+{% for usuario in usuarios %}
+    <option value="{{ usuario.id }}">{{ usuario.nombre }}, {{ usuario.apellidos}}</option>
+{% endfor %}
+</select>
+</form>
+
+{{usuarios}}
