@@ -18,7 +18,7 @@ class PaginaHome(TemplateView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(PaginaHome, self).get_context_data(*args, **kwargs)
-		context["titulo"] = Usuario.objects.all()
+		context["titulo"] = "inicio"
 		return context
 
 
