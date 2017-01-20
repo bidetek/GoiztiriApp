@@ -1,5 +1,8 @@
 <h1>Actividades</h1>
 <p>
+<a href="/">Home</a>/<a href="/usuarios/">CIS</a>/<a href="/actividades/"><b>Actividades</b></a>
+</p>
+<p>
     <a href="{% url "actividades:new" %}">Alta actividad</a>
 </p>
 
@@ -34,6 +37,7 @@
         </div>
     {% endif %}
 
+<h3>Prueba selector de Usuarios</h3>
 <form method="POST">
 <select name="item_id">
 {% for usuario in usuarios %}

@@ -10,8 +10,8 @@ class Actividad(models.Model):
 	"""
 	nombre = models.CharField(max_length=100, blank=False, null=False)
 	descripcion = models.TextField()
-	fecha_inicio = models.DateTimeField()
-	fecha_fin = models.DateTimeField()
+	fecha_inicio = models.DateField()
+	fecha_fin = models.DateField()
 
 	created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
 	modified_at = models.DateTimeField(auto_now=True)

@@ -24,8 +24,6 @@ class ListaActividades(ListView):
 		context["usuarios"] = Usuario.objects.all()
 		return context
 
-
-
 	
 class DetalleActividad(DetailView):
 	template_name = "detalle_actividad.html"
@@ -35,14 +33,14 @@ class DetalleActividad(DetailView):
 class CrearActividad(CreateView):
 	template_name = "crear_actividad.html"
 	model = Actividad
-	success_url = reverse_lazy('Actividad:list')
-	fields = ['nombre','apellidos','email','sexo']
+	success_url = reverse_lazy('actividades:list')
+	fields = ['nombre', 'descripcion', 'fecha_inicio', 'fecha_fin']
 
 class ActualizarActividad(UpdateView):
 	template_name = "crear_actividad.html"
 	model = Actividad
-	success_url = reverse_lazy('Actividad:list')
-	fields = ['nombre','apellidos','email','sexo']
+	success_url = reverse_lazy('actividades:list')
+	fields = ['nombre', 'descripcion', 'fecha_inicio', 'fecha_fin']
 
 	@method_decorator(login_required)
 	def dispatch(self, *args, **kwargs):
@@ -51,7 +49,7 @@ class ActualizarActividad(UpdateView):
 class BorarActividad(DeleteView):
 	template_name = "confirmar_borrar_actividad.html"
 	model = Actividad
-	success_url = reverse_lazy('Actividad:list')
+	success_url = reverse_lazy('actividades:list')
 
 	@method_decorator(login_required)
 	def dispatch(self, *args, **kwargs):
